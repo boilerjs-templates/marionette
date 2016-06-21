@@ -1,0 +1,17 @@
+{
+  "name": "{{appName}}",
+  "description": "{{organization}}",
+  "version": "1.0.0",
+  "private": true,
+  "authors": [
+    "Developer #1 - developer1@mail.com"
+  ],
+  "dependencies": {
+    "backbone": "1.1.2",
+    "backbone-query-parameters": "github:jhudson8/backbone-query-parameters#v0.4.0",
+    "backbone.marionette": "github:marionettejs/backbone.marionette#v2.0.2",
+    "bootstrap": "3.3.6",
+    "jquery": "1.11.3",
+    "underscore": "1.8.3"
+  }
+}
