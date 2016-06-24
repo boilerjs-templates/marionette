@@ -66,7 +66,7 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 			new plugins.HtmlWebpackPlugin({
 				filename: 'index.html',
 				template: 'index.html',
-				favicon: 'favicon.ico'
+				favicon: 'img/favicon.ico'
 			}),
 			new plugins.Notifier()
 		],
