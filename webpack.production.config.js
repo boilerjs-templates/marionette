@@ -94,7 +94,7 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 			new plugins.HtmlWebpackPlugin({
 				filename: 'index.html',
 				template: 'index.html',
-				favicon: 'img/favicon.ico'
+				favicon: 'favicon.ico'
 			}),
 			new plugins.Notifier()
 		]
