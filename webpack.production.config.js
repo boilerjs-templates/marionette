@@ -1,11 +1,10 @@
 var path = require('path');
+var pkg = require('./package.json');
 
-module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
+module.exports = function({ BOILER_PATH, webpack, plugins }) {
 
 	return {
 		entry: [
-			`webpack-dev-server/client?http://${HOST}:${PORT}/`,
-			'webpack/hot/dev-server',
 			path.resolve(__dirname, 'application/main.js')
 		],
 
@@ -15,11 +14,24 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 		},
 
 		module: {
+			preLoaders: [
+				{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					loader: 'jshint-loader',
+					query: {
+						esversion: 6,
+						emitErrors: true,
+						failOnHint: true
+					}
+				}
+			],
+
 			loaders: [
 				{
 					test: /\.js$/i,
 					loader: 'babel-loader',
-					exclude: /node_modules/,
+					exclude: [/node_modules/, /boiler\.js/],
 					query: {
 						presets: [ path.resolve(BOILER_PATH, 'node_modules/babel-preset-es2015') ],
 						plugins: [ path.resolve(BOILER_PATH, 'node_modules/babel-plugin-transform-runtime') ]
@@ -31,7 +43,7 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 				},
 				{
 					test: /\.css$/i,
-					loaders: ['style-loader', 'css-loader']
+					loader: plugins.ExtractTextPlugin.extract(['css-loader'])
 				},
 				{
 					test: /\.(eot|woff2?|ttf|svg|png|jpg)(\?.*)*$/i,
@@ -41,7 +53,7 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 					}
 				},
 				{
-					test: /\.json$/i,
+					test: /\.json$/,
 					loader: 'json-loader',
 					exclude: /node_modules/
 				}
@@ -62,15 +74,29 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 		},
 
 		plugins: [
-			new webpack.HotModuleReplacementPlugin(),
+			new plugins.CleanWebpackPlugin(['dist'], { root: __dirname, verbose: false }),
+			new webpack.DefinePlugin({
+				'process.env': {
+					NODE_ENV: JSON.stringify('production'),
+					BABEL_ENV: JSON.stringify('production')
+				}
+			}),
+			new webpack.optimize.UglifyJsPlugin({
+				compress: { warnings: false },
+				output: { comments: false }
+			}),
+			new webpack.BannerPlugin([
+				pkg.name +  ' ' + pkg.version + ' - ' + pkg.description,
+				'\nDevelopers:\n',
+				pkg.authors.map(function(a) { return '\t' + a;}).join('\n')
+			].join('\n'), {entryOnly: true}),
+			new plugins.ExtractTextPlugin('application-[hash].css'),
 			new plugins.HtmlWebpackPlugin({
 				filename: 'index.html',
 				template: 'index.html',
 				favicon: 'favicon.ico'
 			}),
 			new plugins.Notifier()
-		],
-
-		devtool: 'cheap-module-eval-source-map'
+		]
 	};
 };

@@ -1,6 +1,6 @@
 {
-  "name": "{{appName}}",
-  "description": "{{organization}}",
+  "name": "<%= appName %>",
+  "description": "<%= organization %>",
   "version": "1.0.0",
   "private": true,
   "authors": [

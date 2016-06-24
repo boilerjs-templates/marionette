@@ -1,7 +1,7 @@
 // exports jquery globally
-jQuery = $ = require('jquery');
+window.jQuery = window.$ = require('jquery');
 
-var	Boiler = require('boiler');
+var Boiler = require('boiler');
 var Backbone = require('backbone');
 var Handlebars = require('handlebars/runtime');
 var helpersContext = require.context('./helpers', true, /\.js$/);
