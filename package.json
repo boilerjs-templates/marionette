@@ -1,6 +1,6 @@
 {
   "name": "<%= appName %>",
-  "description": "<%= organization %>",
+  "description": "<%= appName %>",
   "version": "1.0.0",
   "private": true,
   "authors": [
