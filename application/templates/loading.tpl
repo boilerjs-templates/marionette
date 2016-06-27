@@ -2,7 +2,7 @@
 
 <div style="position:fixed;width:100%;z-index:9999;top:33.33%;" class="text-center">
 	<div class="text-center">
-		<img src="assets/img/loader.gif"/>
+		<img src="../../assets/img/loader.gif"/>
 		<p class="text-info" style="margin-top:10px;">Loading...</p>
 	</div>
 </div>
