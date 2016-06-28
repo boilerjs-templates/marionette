@@ -9,5 +9,5 @@ module.exports = function (fse, chalk) {
 	fse.emptyDirSync(DESTINATION_FOLDER);
 	fse.copySync(DIST_FOLDER, DESTINATION_FOLDER);
 
-	console.log(chalk.green('?'), chalk.bold('Deploy:'), chalk.cyan('SUCESS :)'));
+	console.log(chalk.green('?'), chalk.bold('Deploy:'), chalk.cyan('SUCCESS :)'));
 };
