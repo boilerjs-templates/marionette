@@ -46,7 +46,8 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 
 		babel: {
 			presets: [ path.resolve(BOILER_PATH, 'node_modules/babel-preset-es2015') ],
-			plugins: [ path.resolve(BOILER_PATH, 'node_modules/babel-plugin-transform-runtime') ]
+			plugins: [ path.resolve(BOILER_PATH, 'node_modules/babel-plugin-transform-runtime') ],
+			compact: true
 		},
 
 		resolve: {

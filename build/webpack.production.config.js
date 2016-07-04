@@ -10,7 +10,7 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 
 		output: {
 			path: path.resolve(__dirname, '../dist'),
-			filename: 'application-[hash].js'
+			filename: 'js/application-[hash].js'
 		},
 
 		module: {
@@ -58,7 +58,8 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 
 		babel: {
 			presets: [ path.resolve(BOILER_PATH, 'node_modules/babel-preset-es2015') ],
-			plugins: [ path.resolve(BOILER_PATH, 'node_modules/babel-plugin-transform-runtime') ]
+			plugins: [ path.resolve(BOILER_PATH, 'node_modules/babel-plugin-transform-runtime') ],
+			compact: true
 		},
 
 		resolve: {
