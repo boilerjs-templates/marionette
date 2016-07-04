@@ -75,7 +75,6 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 		},
 
 		plugins: [
-			new plugins.CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '../'), verbose: false }),
 			new webpack.DefinePlugin({
 				'process.env': {
 					NODE_ENV: JSON.stringify('production'),
