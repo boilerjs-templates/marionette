@@ -1,6 +1,6 @@
 var path = require('path');
 
-module.exports = function (fse, chalk) {
+module.exports = function (fse, chalk, inquirer) {
 	var APP_NAME = path.basename(path.resolve(__dirname, '../'));
 	var DIST_FOLDER = path.resolve(__dirname, '../dist');
 	var DESTINATION_ROOT = path.resolve(__dirname, '../temp');
