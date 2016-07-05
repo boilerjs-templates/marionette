@@ -91,7 +91,7 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 				'\nDevelopers:\n',
 				pkg.authors.map(function(a) { return '\t' + a;}).join('\n')
 			].join('\n'), {entryOnly: true}),
-			new plugins.ExtractTextPlugin('assets/css/application-[hash].css'),
+			new plugins.ExtractTextPlugin('assets/css/application-[hash].css', { allChunks: true }),
 			new plugins.HtmlWebpackPlugin({
 				filename: 'index.html',
 				template: 'index.html',
