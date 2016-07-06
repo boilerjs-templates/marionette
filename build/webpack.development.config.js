@@ -30,7 +30,7 @@ module.exports = function({ BOILER_PATH, HOST, PORT, webpack, plugins }) {
 					loaders: ['style-loader', 'css-loader']
 				},
 				{
-					test: /\.(eot|woff2?|ttf|svg|png|jpg)(\?.*)*$/i,
+					test: /\.(eot|woff2?|ttf|svg|png|jpg|gif|bmp)(\?.*)*$/i,
 					loader: 'file-loader',
 					query: {
 						name: 'assets/img/[name].[ext]'

@@ -42,7 +42,7 @@ module.exports = function({ BOILER_PATH, webpack, plugins }) {
 					loader: plugins.ExtractTextPlugin.extract(['css-loader'], { publicPath: '../../' })
 				},
 				{
-					test: /\.(eot|woff2?|ttf|svg|png|jpg)(\?.*)*$/i,
+					test: /\.(eot|woff2?|ttf|svg|png|jpg|gif|bmp)(\?.*)*$/i,
 					loader: 'file-loader',
 					query: {
 						name: 'assets/img/[name].[ext]'
